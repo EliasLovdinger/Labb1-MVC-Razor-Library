@@ -1,0 +1,31 @@
+﻿@model CartViewModel
+
+<h2>Cart: All the books you wanna borrow</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Cart.CartItems)
+        {
+            <tr>
+                <td class="text-left">
+                    <a class="btn btn-primary" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-cartId="@item.Book.BookId">Remove</a>
+                </td>
+                <td class="text-left">Book: @item.Book.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center">
+
+    <a class="btn btn-primary" asp-controller="Cart" asp-action="ClearCart">Clear Cart</a>
+
+    <a class="btn" asp-controller="Customer" asp-action="SelectCustomer">Continue</a>
+
+</div>

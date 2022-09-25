@@ -1,0 +1,20 @@
+﻿@model SelectCustomerViewModel
+
+@{
+    ViewData["Title"] = "SelectCustomer";
+}
+
+@using (Html.BeginForm("SelectCustomer", "Customer", FormMethod.Post))
+{
+    @Html.DropDownListFor(c =>c.CustomerList.CustomerId, new SelectList(Model.CustomerList.CustomerList,"Value","Text"), new{@class="form-control"})
+}
+
+
+<p>Please Enter the persons first name below</p>
+<form method="post" asp-controller="Customer" asp-action="SelectCustomer">
+
+    <input type="text" name="FirstName" value="" />
+
+    <input type="submit" value="Submit" class="submit" />
+
+</form>

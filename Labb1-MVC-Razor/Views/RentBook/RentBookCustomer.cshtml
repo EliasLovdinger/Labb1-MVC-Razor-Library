@@ -1,0 +1,22 @@
+﻿@model RentBookCustomer
+
+@*@foreach (var item in Model.CustomerWhoRented)
+{
+    <div>
+        <p>@item.CustomerId</p>
+        <p>@item.FirstName</p>
+        <p>@item.LastName</p>
+        @if (item.RentBook != null)
+        {
+            @foreach (var item2 in Model.RentedBooks.Where(r => r.CustomerId == item.CustomerId))
+            {
+                <p>@item2.RentBookId</p>
+                <p>@item2.RentedDate</p>
+            }
+        }
+        else{
+            <p>This Customer havnt rented a book yet</p>
+        }
+
+    </div>*@
+}

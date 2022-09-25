@@ -1,0 +1,10 @@
+﻿@model BookListViewModel
+
+<h1>@Model.CurrentIsInStock</h1>
+
+    @foreach(var book in Model.Books)
+    {
+        <div class="border">
+        <partial name=_bookCard model="book" />
+        </div>
+    }

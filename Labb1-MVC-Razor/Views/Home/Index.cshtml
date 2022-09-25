@@ -1,0 +1,10 @@
+﻿@model HomeViewModel
+
+<h1>Books in stock</h1>
+
+    @foreach(var book in Model.BookInstock)
+    {
+        <div class="border">
+            <partial name="_bookCard" model="book" />
+        </div>
+    }
