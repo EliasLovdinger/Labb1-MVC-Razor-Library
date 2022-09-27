@@ -43,7 +43,7 @@ namespace Labb1_MVC_Razor.Models
 
         public Customer GetCustomerById(int id)
         {
-            return GetAllCustomers.FirstOrDefault(c => c.CustomerId == id);
+            return _appDbContext.Customers.Include(c => c.RentBook).ThenInclude(r => r.RentBookDetails).ThenInclude(r => r.Book).FirstOrDefault(c => c.CustomerId == id);
         }
 
         public Customer SelectCustomer()

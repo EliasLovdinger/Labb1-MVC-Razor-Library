@@ -2,6 +2,7 @@
 using Labb1_MVC_Razor.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Razor.Language.Extensions;
 using Microsoft.CodeAnalysis.VisualBasic;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
@@ -10,14 +11,14 @@ namespace Labb1_MVC_Razor.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly ICustomerRepository _customer;
+        private readonly ICustomerRepository _customerRepository;
         private readonly AppDbContext _appDbContext;
         private readonly IRentBookRepository _RentBookRepository;
         private readonly Cart _cart;
 
-        public CustomerController(ICustomerRepository customer, AppDbContext appDbContext, IRentBookRepository rentBookRepository, Cart cart)
+        public CustomerController(ICustomerRepository customerRepository, AppDbContext appDbContext, IRentBookRepository rentBookRepository, Cart cart)
         {
-            _customer = customer;
+            _customerRepository = customerRepository;
             _appDbContext = appDbContext;
             _RentBookRepository = rentBookRepository;
             _cart = cart;
@@ -26,6 +27,34 @@ namespace Labb1_MVC_Razor.Controllers
         public async Task<IActionResult> Index()
         {
             return View( await _appDbContext.Customers.ToListAsync());
+        }
+
+        public IActionResult GetCustomerDetails(int customerId)
+        {
+            var customer = _customerRepository.GetCustomerById(customerId);
+
+            var listOfRentBooks = _appDbContext.RentBooks.Include(b => b.RentBookDetails).ThenInclude(c => c.Book)
+                .Where(r => r.CustomerId == customerId);
+
+
+            var viewModel = new GetCustomerDetails
+            {
+                ListOfBooks = listOfRentBooks.ToList(),
+                customerDetails = customer
+            };
+
+            return View(viewModel);
+        }
+        public IActionResult ReturnBook(int id)
+        {
+            //var BookReturned = _appDbContext.Books.FirstOrDefault(b => b.BookId == bookId);
+            //var Amount = BookReturned.Amount;
+            //Amount++;
+            //BookReturned.Amount = Amount;
+            //_appDbContext.Books.Update(BookReturned);
+
+            _RentBookRepository.ReturnABook(id);
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult AddOrEdit(int id)
@@ -39,7 +68,6 @@ namespace Labb1_MVC_Razor.Controllers
                 return View(_appDbContext.Customers.Find(id));
             }
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -142,7 +170,6 @@ namespace Labb1_MVC_Razor.Controllers
                 {
                     _RentBookRepository.RentABook(rentBook);
                     _cart.ClearCart();
-
 
                     return RedirectToAction("Index","Home");
                 }

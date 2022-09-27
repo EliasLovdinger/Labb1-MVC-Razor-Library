@@ -16,7 +16,6 @@
         public RentBook RentABook(RentBook rentBook)
         {
             rentBook.RentedDate = DateTime.Now;
-
             _appDbContext.RentBooks.Add(rentBook);
             _appDbContext.SaveChanges();
 
@@ -30,6 +29,11 @@
                     BookId = cartItem.Book.BookId,
                     RentBookId = rentBook.RentBookId, 
                 };
+                //var BookRented = _appDbContext.Books.FirstOrDefault(b => b.BookId == cartItem.CartItemId);
+                //BookRented.Amount = BookRented.Amount -1;
+
+                //_appDbContext.Books.Update(BookRented);
+
                 _appDbContext.RentBookDetails.Add(RentBookDetails);
             }
             
@@ -38,10 +42,16 @@
             return rentBook;
         }
 
-        public RentBook ReturnABook(RentBook rentbook)
+        public RentBook ReturnABook(int rentBookId)
         {
-            rentbook.ReturnDate = DateTime.Now;
-            return rentbook;
+            var rentBookToReturn = _appDbContext.RentBooks.FirstOrDefault(r => r.RentBookId == rentBookId);
+            rentBookToReturn.ReturnDate = DateTime.Now;
+            rentBookToReturn.Returned = true;
+
+            _appDbContext.RentBooks.Update(rentBookToReturn);
+            _appDbContext.SaveChanges();
+
+            return rentBookToReturn;
         }
 
     }

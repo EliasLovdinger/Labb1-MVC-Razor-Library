@@ -30,7 +30,10 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
+                            <a asp-controller="Customer" asp-action="GetCustomerDetails" asp-route-customerId="@item.CustomerId">
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </a>
+                            
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.LastName)

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Labb1_MVC_Razor.Migrations
 {
-    public partial class first : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,6 +68,7 @@ namespace Labb1_MVC_Razor.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RentedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Returned = table.Column<bool>(type: "bit", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

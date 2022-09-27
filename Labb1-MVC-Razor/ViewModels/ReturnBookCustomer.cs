@@ -2,9 +2,9 @@
 
 namespace Labb1_MVC_Razor.ViewModels
 {
-    public class RentBookCustomer
+    public class ReturnBookCustomer
     {
-        public RentBook RentedBooks { get; set; }
+        public RentBookDetail RentedBooks { get; set; }
         public Customer CustomerWhoRented { get; set; }
 
 

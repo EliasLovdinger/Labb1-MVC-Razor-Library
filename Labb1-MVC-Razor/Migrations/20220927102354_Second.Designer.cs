@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labb1_MVC_Razor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220925120139_Second2")]
-    partial class Second2
+    [Migration("20220927102354_Second")]
+    partial class Second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,6 +141,9 @@ namespace Labb1_MVC_Razor.Migrations
 
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("Returned")
+                        .HasColumnType("bit");
 
                     b.HasKey("RentBookId");
 

@@ -4,6 +4,6 @@
     {
         IEnumerable<RentBook> GetAllRentBooks();
         RentBook RentABook(RentBook rentBook);
-        RentBook ReturnABook(RentBook bookCustomer);
+        RentBook ReturnABook(int rentBookId);
     }
 }

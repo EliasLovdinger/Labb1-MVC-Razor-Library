@@ -140,6 +140,9 @@ namespace Labb1_MVC_Razor.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Returned")
+                        .HasColumnType("bit");
+
                     b.HasKey("RentBookId");
 
                     b.HasIndex("CustomerId");

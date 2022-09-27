@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labb1_MVC_Razor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220925102851_Second")]
-    partial class Second
+    [Migration("20220926130416_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -142,6 +142,9 @@ namespace Labb1_MVC_Razor.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Returned")
+                        .HasColumnType("bit");
+
                     b.HasKey("RentBookId");
 
                     b.HasIndex("CustomerId");
@@ -185,11 +188,13 @@ namespace Labb1_MVC_Razor.Migrations
 
             modelBuilder.Entity("Labb1_MVC_Razor.Models.RentBook", b =>
                 {
-                    b.HasOne("Labb1_MVC_Razor.Models.Customer", null)
+                    b.HasOne("Labb1_MVC_Razor.Models.Customer", "Customer")
                         .WithMany("RentBook")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Labb1_MVC_Razor.Models.RentBookDetail", b =>

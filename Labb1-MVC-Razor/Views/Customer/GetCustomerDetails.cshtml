@@ -1,0 +1,30 @@
+﻿@model GetCustomerDetails
+
+<h1>@Model.customerDetails.FirstName</h1>
+@foreach (var item in Model.ListOfBooks)
+{
+    @foreach (var book in item.RentBookDetails)
+    {
+        <div class="row">
+            <div class="col-md-8">
+                <p>-------------------------------------------------</p>
+                    @if (item.Returned == false)
+                    {
+                        <a asp-controller="Customer" asp-action="ReturnBook" asp-route-id="@item.RentBookId">
+                        <p>Return</p>
+                        </a>
+                        <p>Title: @book.Book.Title</p>
+                        <p>Rented: @book.RentBook.RentedDate</p>
+                        <p>Returned: Not Yet Returned</p>
+                    }
+                    else
+                    {
+                        <p>Title: @book.Book.Title</p>
+                        <p>Rented: @book.RentBook.RentedDate</p>
+                        <p>Returned: @book.RentBook.ReturnDate</p>
+                    }
+            </div>
+        </div>
+
+    }
+}
