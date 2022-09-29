@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Labb1_MVC_Razor.Models
 {
@@ -10,5 +11,6 @@ namespace Labb1_MVC_Razor.Models
         public RentBook RentBook { get; set; }
         public int BookId { get; set; }
         public Book Book { get; set; }
+
     }
 }

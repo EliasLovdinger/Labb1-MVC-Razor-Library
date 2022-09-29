@@ -11,8 +11,6 @@ namespace Labb1_MVC_Razor.Models
 
         public DateTime RentedDate { get; set; }
         public DateTime ReturnDate { get; set; }
-        [AllowNull]
-        public bool Returned { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public List<RentBookDetail> RentBookDetails { get; set; }
