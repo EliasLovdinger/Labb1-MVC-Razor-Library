@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labb1_MVC_Razor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220929081401_First-Migration")]
-    partial class FirstMigration
+    [Migration("20220929085628_Last-Migration")]
+    partial class LastMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

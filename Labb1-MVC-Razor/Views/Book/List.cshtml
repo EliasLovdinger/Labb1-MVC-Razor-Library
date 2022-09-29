@@ -1,10 +1,10 @@
 ﻿@model BookListViewModel
 
-<h1>@Model.CurrentIsInStock</h1>
+<h1>@Model.CurrentInStock</h1>
 
     @foreach(var book in Model.Books)
     {
         <div class="border">
-        <partial name=_bookCard model="book" />
+        <partial name=_bookCardAll model="book" />
         </div>
     }

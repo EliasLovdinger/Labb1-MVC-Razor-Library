@@ -6,7 +6,7 @@ namespace Labb1_MVC_Razor.ViewModels
     {
         public IEnumerable<Book> Books { get; set; }
 
-        public string CurrentIsInStock { get; set; }
+        public string CurrentInStock { get; set; }
 
     }
 }

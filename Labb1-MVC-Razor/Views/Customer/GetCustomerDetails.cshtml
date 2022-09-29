@@ -9,20 +9,20 @@
             <div class="col-md-8">
                 <p>-------------------------------------------------</p>
                 @if (item.ReturnDate == DateTime.MinValue)
-                    {
-                        <a asp-controller="Customer" asp-action="ReturnBook" asp-route-id="@item.RentBookId">
+                {
+                    <a asp-controller="Customer" asp-action="ReturnBook" asp-route-id="@item.RentBookId">
                         <p>Return</p>
-                        </a>
-                        <p>Title: @book.Book.Title</p>
-                        <p>Rented: @book.RentBook.RentedDate</p>
-                        <p>Returned: Not Yet Returned</p>
-                    }
-                    else
-                    {
-                        <p>Title: @book.Book.Title</p>
-                        <p>Rented: @book.RentBook.RentedDate</p>
-                        <p>Returned: @book.RentBook.ReturnDate</p>
-                    }
+                    </a>
+                    <p>Title: @book.Book.Title</p>
+                    <p>Rented: @book.RentBook.RentedDate</p>
+                    <p>Returned: Not Yet Returned</p>
+                }
+                else
+                {
+                    <p>Title: @book.Book.Title</p>
+                    <p>Rented: @book.RentBook.RentedDate</p>
+                    <p>Returned: @book.RentBook.ReturnDate</p>
+                }
             </div>
         </div>
 

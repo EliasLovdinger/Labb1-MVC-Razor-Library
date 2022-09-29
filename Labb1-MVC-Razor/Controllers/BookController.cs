@@ -33,7 +33,7 @@ namespace Labb1_MVC_Razor.Controllers
             return View(new BookListViewModel
             {
                 Books = books,
-                CurrentIsInStock = currentIsInStock
+                CurrentInStock = currentIsInStock
             });
         }
 

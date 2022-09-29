@@ -2,7 +2,7 @@
 {
     public class RentBookRepository : IRentBookRepository
     {
-        private readonly AppDbContext  _appDbContext;
+        private readonly AppDbContext _appDbContext;
         private readonly Cart _cart;
 
         public RentBookRepository(AppDbContext appDbContext, Cart cart)
@@ -36,7 +36,7 @@
 
                 _appDbContext.RentBookDetails.Add(RentBookDetails);
             }
-            
+
             _appDbContext.SaveChanges();
 
             return rentBook;
