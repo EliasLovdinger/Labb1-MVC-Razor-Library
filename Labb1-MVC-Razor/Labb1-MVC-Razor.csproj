@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Shared\Components\cartSummary\Default.cshtml" />
+    <None Include="Views\Shared\Components\CartSummary\Default.cshtml" />
   </ItemGroup>
 
 </Project>

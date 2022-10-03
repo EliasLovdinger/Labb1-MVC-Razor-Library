@@ -3,13 +3,13 @@
 <div class="col-sm-4 col-lg-6 col-md-4">
 
     <div class="caption">
-        <h3><a asp-controller="Book" asp-action="Details" asp-route-id="@Model.BookId">@Model.Title</a></h3>
-        <p>@Model.Description</p>
+        <h2><a asp-controller="Book" asp-action="Details" asp-route-id="@Model.BookId"><i class="fa-solid fa-book "></i> @Model.Title</a></h2>
+        <h3>Books left in stock: @Model.Amount</h3>
     </div>
 
     <div class="addToCart">
         <p class="button">
-            <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-bookId="@Model.BookId">Add To Cart</a>
+            <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-bookId="@Model.BookId"><i class="fa-solid fa-plus"></i> Add To Cart</a>
         </p>
     </div>
 </div>

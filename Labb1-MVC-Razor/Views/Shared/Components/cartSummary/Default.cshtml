@@ -4,7 +4,10 @@
 {
     <li>
         <a asp-controller="Cart" asp-action="Index">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-status">
+                @Model.Cart.GetAmount()
+            </span>
         </a>
     </li>
 }

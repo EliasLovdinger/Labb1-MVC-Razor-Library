@@ -34,7 +34,7 @@ namespace Labb1_MVC_Razor.Controllers
             {
                 _cart.AddToCart(selectedBook);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         public RedirectToActionResult RemoveFromCart(int bookId)

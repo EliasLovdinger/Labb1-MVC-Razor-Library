@@ -96,6 +96,7 @@ namespace Labb1_MVC_Razor.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var CustomerToDelete = await _appDbContext.Customers.FindAsync(id);
+
             _appDbContext.Customers.Remove(CustomerToDelete);
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
